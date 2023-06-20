@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/css/bootstrap.min.css" >
+    <title>Form Validation</title>
+</head>
+<body>
+    <div class="container bg-light p-5 ">
+        <h1 class="text-center">Information Form</h1>
+        <form onsubmit="validareForm()">
+            <div class="form-group">
+                <label for="exampleInputName">Name</label>
+                <input type="text" class="form-control" id="exampleInputName" aria-describedby="emailHelp" placeholder="Name">
+                
+            </div>
+            <div class="form-group">
+                <label for="exampleInputEmail1">Email address</label>
+                <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Enter email">
+                
+            </div>
+            <div class="form-group">
+                <label for="exampleInputPassword">Password</label>
+                <input type="password" class="form-control" id="exampleInputPassword" placeholder="Password">
+            </div>
+            <div class="form-group">
+                <label for="exampleConfirmPassword">Confirm Password</label>
+                <input type="password" class="form-control" id="exampleConfirmPassword" placeholder="Comfirm Password">
+            </div>
+            <button type="submit" class="btn btn-primary">Submit</button>
+        </form>
+        <p class="text-center text-danger" id="errorMessage"></p>
+        <p class="text-center text-Success" id="successMessage"></p>
+    </div>
+
+    <script>
+        const validareForm = () => {
+            event.preventDefault()
+
+            let name = document.getElementById('exampleInputName')
+            let email = document.getElementById('exampleInputEmail1')
+            let pass = document.getElementById('exampleInputPassword')
+            let conPass = document.getElementById('exampleConfirmPassword')
+
+            let err = document.getElementById('errorMessage')
+            let success = document.getElementById('successMessage')
+
+            err.innerHTML = '';
+            success.innerHTML = '';
+
+            if(name.value == '' || name.value == null){
+                err.innerHTML = 'Name field is empty';
+                name.style.border = "1px solid red";
+                return
+            }
+            name.style.border = "1px solid #ddd";
+
+            if(!email.value.includes("@") || email.value == null){
+                err.innerHTML = 'Invalid Email';
+                email.style.border = "1px solid red";
+                return
+            }
+            email.style.border = "1px solid #ddd";
+
+            if (pass.value.length < 8 && conPass.value.length < 8) {
+
+                err.innerHTML = "Password should be at least 8 characters long";
+                return
+
+            }  else if ((!/[a-z]/.test(pass.value) || !/[A-Z]/.test(pass.value) || !/[0-9]/.test(pass.value)) && ((!/[a-z]/.test(conPass.value) || !/[A-Z]/.test(conPass.value) || !/[0-9]/.test(conPass.value)) )) {
+
+                err.innerHTML = "Password should contain at least one uppercase letter, one lowercase letter, and one digit"
+                return
+
+            }
+
+            if (pass.value !== conPass.value) {
+                err.innerHTML = "Passwords do not match";
+                return
+            }
+
+            err.innerHTML = '';
+            success.innerHTML = 'Submit Successfull!';
+
+
+        }
+    </script>
+</body>
+</html>
+
+
+
+
+
+
+

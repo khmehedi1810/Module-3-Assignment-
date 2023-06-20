@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Change Image Source</title>
+</head>
+<body>
+    <h1>Change Image Source Example</h1>
+    <button id="myButton">Change Image</button>
+    <img id="myImage" src="https://cdn.ostad.app/user/avatar/2023-05-09T15-57-26.389Z-IMGKH%20_3197.jpg" alt="Initial Image">
+
+    <script>
+        const button = document.getElementById("myButton");
+        const image = document.getElementById("myImage");
+
+        button.addEventListener("click", function() {
+            image.src = "https://cdn.ostad.app/public/upload/2022-11-27T06-52-05.802Z-logo%20ostad.png";
+        });
+    </script>
+</body>
+</html>

@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Image Change on Mouseover</title>
+  <style>
+    /* Optional styling */
+    #image {
+      width: 200px;
+    }
+  </style>
+</head>
+<body>
+  <img id="image" src="original-image.jpg" alt="Original Image">
+
+  <script>
+    // Get the image element by its ID
+    const image = document.getElementById('image');
+
+    // Define the new image source
+    const newImageSrc = 'new-image.jpg';
+
+    // Add event listeners for mouseover and mouseout events
+    image.addEventListener('mouseover', function() {
+      // Change the image source to the new image
+      image.src = newImageSrc
+    });
+
+    image.addEventListener('mouseout', function() {
+      // Change the image source back to the original image
+      image.src = 'original-image.jpg'
+    });
+  </script>
+</body>
+</html>
